@@ -15,13 +15,13 @@ host_name = st.secrets['HOST_NAME']
 username = st.secrets['DB_USER'] 
 password = st.secrets['DB_PASSWORD'] 
 
-@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None})
-def init_connection():
-    conn = ps.connect(host=host_name, 
+#@st.cache(allow_output_mutation=True, hash_funcs={"_thread.RLock": lambda _: None})
+#def init_connection():
+conn = ps.connect(host=host_name, 
             user=username, 
             password=password)
-    return conn
-conn = init_connection()
+    #return conn
+#conn = init_connection()
 
 df = pd.read_sql('SELECT * FROM registros2', conn)
 
